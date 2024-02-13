@@ -25,8 +25,12 @@ public class GaraController {
 		StringBuilder elenco=new StringBuilder();
 		elenco.append("elenco gare: " + elencoGara.size());
 		elenco.append("<br><br>");
-		for (Gara g:elencoGara)
-			elenco.append(g.toString()+ "<br>");
+		for (Gara g:elencoGara) {
+			elenco.append(g.getIdGara()+ "<br>");
+			elenco.append(g.getLuogo()+ "<br>");
+			elenco.append(g.getDataGara()+ "<br>");
+			
+		}
 		return elenco.toString();
 		
 	}
