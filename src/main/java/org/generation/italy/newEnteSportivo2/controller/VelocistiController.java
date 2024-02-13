@@ -37,7 +37,7 @@ public class VelocistiController {
 //			
 //		} 
 		model.addAttribute("elenco",elencoVelocisti);
-		return "/velocisti/elenco";
+		return "/velocista/elenco";
 		
 	}
 
