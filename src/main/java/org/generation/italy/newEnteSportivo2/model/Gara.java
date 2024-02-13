@@ -18,7 +18,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "gara")
 public class Gara {
-	//modifiche
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
