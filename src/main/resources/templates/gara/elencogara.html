@@ -31,10 +31,32 @@
             </tr>
         </thead>
         <tbody>
+			
             <tr th:each="gara : ${elencogare}">
                 <td th:text="${gara.idGara}"></td>
                 <td th:text="${gara.luogo}"></td>
                 <td th:text="${gara.dataGara}"></td>
+            </tr>
+        </tbody>
+        <P></P>
+		<P></P>
+    </table>
+    <h2>ELENCO DEI VELOCISTI </h2>
+    <table>
+        <thead>
+            <tr>
+                <th>codice Fiscale</th>
+                <th>Nominativo</th>
+                <th>età</th>
+                <th>peso</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="velocisti : ${elencovelocisti}">
+                <td th:text="${velocisti.codiceFiscale}"></td>
+                <td th:text="${velocisti.nominativo}"></td>
+                <td th:text="${velocisti.eta}"></td>
+                <td th:text="${velocisti.peso}"></td>
             </tr>
         </tbody>
     </table>

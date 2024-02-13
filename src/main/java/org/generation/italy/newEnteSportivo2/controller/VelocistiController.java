@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping ("/velocista")
+@RequestMapping ("/velocisti")
 public class VelocistiController {
 	
 	@Autowired
@@ -36,8 +36,8 @@ public class VelocistiController {
 //			elenco.append(v.getEta()+ "<br>");
 //			
 //		} 
-		model.addAttribute("elenco",elencoVelocisti);
-		return "/velocista/elenco";
+		model.addAttribute("elencovelocisti",elencoVelocisti);
+		return "/gara/elencogara";
 		
 	}
 

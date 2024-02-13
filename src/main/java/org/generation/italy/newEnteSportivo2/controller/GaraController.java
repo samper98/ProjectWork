@@ -8,7 +8,7 @@ import java.util.Optional;
 import org.generation.italy.newEnteSportivo2.model.Gara;
 import org.generation.italy.newEnteSportivo2.model.Velocista;
 import org.generation.italy.newEnteSportivo2.repository.GaraRepository;
-
+import org.generation.italy.newEnteSportivo2.repository.VelocistiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class GaraController {
 	
 	@Autowired
+	VelocistiRepository velocistiRepository;
+	
+	@Autowired
 	GaraRepository garaRepository;
 	
 	@GetMapping("/elenco")
@@ -31,7 +34,7 @@ public class GaraController {
 			Model model) {
 		 
 		List<Gara> elencoGara=garaRepository.findAll();
-		
+		List<Velocista> elencoVelocisti=velocistiRepository.findAll();
 //		ArrayList<Gara> elencoGara=(ArrayList<Gara>) garaRepository.findAll();
 //	
 //		
@@ -45,10 +48,14 @@ public class GaraController {
 //			
 //		}
 		model.addAttribute("elencogare",elencoGara);
-		return "/gara/elenco";
+		model.addAttribute("elencovelocisti",elencoVelocisti);
+		return "/gara/elencogara";
 		
 	}
 
+	
+	
+	
 	
 //	@GetMapping("/dettaglio/{id}")			//gestisce una richiesta GET all'indirizzo /Fornitori/elenco
 //	@ResponseBody
