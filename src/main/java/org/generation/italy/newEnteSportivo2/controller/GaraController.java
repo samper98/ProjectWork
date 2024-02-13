@@ -1,5 +1,7 @@
 package org.generation.italy.newEnteSportivo2.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,9 +28,13 @@ public class GaraController {
 	
 	@GetMapping("/elenco")
 	public String elencoGara(
-			Model model ) {
+			Model model) {
+		 
 		List<Gara> elencoGara=garaRepository.findAll();
 		
+//		ArrayList<Gara> elencoGara=(ArrayList<Gara>) garaRepository.findAll();
+//	
+//		
 //		StringBuilder elenco=new StringBuilder();
 //		elenco.append("elenco gare: " + elencoGara.size());
 //		elenco.append("<br><br>");
@@ -37,12 +44,13 @@ public class GaraController {
 //			elenco.append(g.getDataGara()+ "<br>");
 //			
 //		}
-		model.addAttribute("elenco",elencoGara);
+		model.addAttribute("elencogare",elencoGara);
 		return "/gara/elenco";
 		
 	}
+
 	
-//	@GetMapping("{id}")			//gestisce una richiesta GET all'indirizzo /Fornitori/elenco
+//	@GetMapping("/dettaglio/{id}")			//gestisce una richiesta GET all'indirizzo /Fornitori/elenco
 //	@ResponseBody
 //	public String dettaglioGara(@PathVariable Integer id) {
 //		Optional<Gara> optGara=garaRepository.findById(id);
@@ -50,14 +58,14 @@ public class GaraController {
 //		{
 //			StringBuilder dettaglio=new StringBuilder();
 //			dettaglio.append(optGara.get().toString()+"<br>");
-//			dettaglio.append("Prodotti forniti: <br>");
-//			for (Velocista v: optGara.get().getIdGara())
-//				dettaglio.append(v.toString()+"<br>");
+//			dettaglio.append("elenco gare : <br>");
+//			for (Gara g: optGara.get().getIdGara())
+//				dettaglio.append(g.toString()+"<br>");
 //			return dettaglio.toString();
 //		}			
 //		else
 //			return "Velocista non trovato";}
 	
 	
-
 }
+

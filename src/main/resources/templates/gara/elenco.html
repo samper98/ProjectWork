@@ -1,11 +1,43 @@
 <!DOCTYPE html>
-<html>
+
+
+<html  xmlns:th="http://www.thymeleaf.org/">
+	<style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Gare </title>
 </head>
 <body>
-	patitucci è gay
+	<h2>ELENCO GARE </h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>luogo</th>
+                <th>data ora luogo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="gara : ${elencogare}">
+                <td th:text="${gara.idGara}"></td>
+                <td th:text="${gara.luogo}"></td>
+                <td th:text="${gara.dataGara}"></td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
 </html>

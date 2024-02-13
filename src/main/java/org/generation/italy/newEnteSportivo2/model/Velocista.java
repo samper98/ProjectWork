@@ -22,7 +22,7 @@ public class Velocista {
 	private String nominativo;
 
 	@Column(nullable = false, length = 3, name = "eta")
-	private Byte eta;
+	private Short eta;
 
 	@Column(nullable = false, length = 3, name = "altezza")
 	private Byte altezza;
@@ -42,7 +42,7 @@ public class Velocista {
 		super();
 	}
 
-	public Velocista(String codiceFiscale, String nominativo, Byte eta, Byte altezza, Float peso) {
+	public Velocista(String codiceFiscale, String nominativo, Short eta, Byte altezza, Float peso) {
 		super();
 		this.codiceFiscale = codiceFiscale;
 		this.nominativo = nominativo;
@@ -59,7 +59,7 @@ public class Velocista {
 		return nominativo;
 	}
 
-	public Byte getEta() {
+	public Short getEta() {
 		return eta;
 	}
 
