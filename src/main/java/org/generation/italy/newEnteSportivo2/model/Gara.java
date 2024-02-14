@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 import java.util.List;
 
-
+import javax.xml.crypto.Data;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -78,5 +78,13 @@ public class Gara implements Comparable<Gara> {
 		return this.getLuogo().compareTo(g.getLuogo());
 		
 	}
+	//prova ordine per data
+	public int compareTo1(Gara g) {
+		
+		return this.getDataGara().compareTo(g.getDataGara());
+		
+	}
+	
+
 
 }

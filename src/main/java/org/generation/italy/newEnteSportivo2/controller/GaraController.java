@@ -1,5 +1,6 @@
 package org.generation.italy.newEnteSportivo2.controller;
 
+import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,59 +20,45 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 @Controller
 @RequestMapping("/gara")
 public class GaraController {
-	
+
 	@Autowired
 	VelocistiRepository velocistiRepository;
-	
+
 	@Autowired
 	GaraRepository garaRepository;
-	
-	@GetMapping("/elenco")
-	public String elencoGara(
-			Model model,
-			@RequestParam(required = false) String luogo,
-			@RequestParam(required = false) String ordina
-			) throws Exception{
-		 
-//		List<Gara> elencoGara=garaRepository.findByLuogo(luogo);
-		ArrayList<Gara> elencoGara=(ArrayList<Gara>) garaRepository.findAll();
-	    List<Velocista> elencoVelocisti=velocistiRepository.findAll();
 
-	   
-       if(ordina!=null)
-       {
-    	   if(ordina.equals("asc")) 
-    		   Collections.sort(elencoGara);
-    	   else 
-    		   return"ordinamento non valido";
-    	   
-       }
-		
-		model.addAttribute("elencogare",elencoGara);
-		model.addAttribute("elencovelocisti",elencoVelocisti);
-		return "/gara/elencogara";
-		
+	@GetMapping("/elenco")
+	public String elencoGara(Model model) {
+
+		List<Gara> elencoGara = garaRepository.findAll();
+		// ArrayList<Gara> elencoGara=(ArrayList<Gara>) garaRepository.findAll();
+		List<Velocista> elencoVelocisti = velocistiRepository.findAll();
+
+		model.addAttribute("elencogare", elencoGara);
+		model.addAttribute("elencovelocisti", elencoVelocisti);
+		return "gara/elencogara";
+
 	}
 
-	
-//	@GetMapping("/dettaglio")
-//	public String luogoGara(
-//			Model model,
-//			@PathVariable String luogo) {
-//		List<Gara> optGara=garaRepository.findByLuogo(luogo);
-//		
-//
-//		
-//		model.addAttribute("luogo",optGara);
-//		return "/gara/luogogara";
-//	}
-	
-	
+	@GetMapping("/ordina-gare")
+	public String ordinaGare(Model model) {
+		List<Gara> elencoGara = garaRepository.findAll();
 
+		Collections.sort(elencoGara);
+
+		model.addAttribute("elencogare", elencoGara);
+		return "gara/elencoGara";
+	}
 	
+	@GetMapping("/ordina-per-data")
+	public String ordinaPerData(Model model) {
+		List<Gara> elencoDataGara=garaRepository.findAll();
+		Collections.sort(elencoDataGara);
+		model.addAttribute("elencoDataGara", elencoDataGara);
+		return "gara/elencogara";
+	}
+
 }
-

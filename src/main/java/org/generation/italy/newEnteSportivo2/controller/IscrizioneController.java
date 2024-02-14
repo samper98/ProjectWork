@@ -26,7 +26,7 @@ public class IscrizioneController {
 	List<Iscrizione> elencoIscritti= iscrizioneRepository.findAll();
 	
 	model.addAttribute("elencoiscritti",elencoIscritti);
-	return"/gara/iscrizione";
+	return"gara/iscrizione";
 	}
 
 }
