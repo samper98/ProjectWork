@@ -2,7 +2,10 @@ package org.generation.italy.newEnteSportivo2.model;
 
 import java.sql.Timestamp;
 
+
 import java.util.List;
+
+
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -17,7 +20,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "gara")
-public class Gara {
+public class Gara implements Comparable<Gara> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,6 +70,13 @@ public class Gara {
 
 	public Short getIdGara() {
 		return idGara;
+	}
+	
+	@Override
+	public int compareTo(Gara g) {
+		
+		return this.getLuogo().compareTo(g.getLuogo());
+		
 	}
 
 }

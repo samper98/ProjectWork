@@ -9,6 +9,7 @@ import org.generation.italy.newEnteSportivo2.model.Gara;
 import org.generation.italy.newEnteSportivo2.model.Velocista;
 import org.generation.italy.newEnteSportivo2.repository.GaraRepository;
 import org.generation.italy.newEnteSportivo2.repository.VelocistiRepository;
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,14 +32,24 @@ public class GaraController {
 	
 	@GetMapping("/elenco")
 	public String elencoGara(
-			Model model
-			) {
+			Model model,
+			@RequestParam(required = false) String luogo,
+			@RequestParam(required = false) String ordina
+			) throws Exception{
 		 
 //		List<Gara> elencoGara=garaRepository.findByLuogo(luogo);
-		List<Gara> elencoGara=garaRepository.findAll();
-		
-		List<Velocista> elencoVelocisti=velocistiRepository.findAll();
+		ArrayList<Gara> elencoGara=(ArrayList<Gara>) garaRepository.findAll();
+	    List<Velocista> elencoVelocisti=velocistiRepository.findAll();
 
+	   
+       if(ordina!=null)
+       {
+    	   if(ordina.equals("asc")) 
+    		   Collections.sort(elencoGara);
+    	   else 
+    		   return"ordinamento non valido";
+    	   
+       }
 		
 		model.addAttribute("elencogare",elencoGara);
 		model.addAttribute("elencovelocisti",elencoVelocisti);
@@ -47,7 +58,17 @@ public class GaraController {
 	}
 
 	
-	
+//	@GetMapping("/dettaglio")
+//	public String luogoGara(
+//			Model model,
+//			@PathVariable String luogo) {
+//		List<Gara> optGara=garaRepository.findByLuogo(luogo);
+//		
+//
+//		
+//		model.addAttribute("luogo",optGara);
+//		return "/gara/luogogara";
+//	}
 	
 	
 
