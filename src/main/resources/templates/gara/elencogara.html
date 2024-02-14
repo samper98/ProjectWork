@@ -36,6 +36,7 @@
                 <td th:text="${gara.idGara}"></td>
                 <td th:text="${gara.luogo}"></td>
                 <td th:text="${gara.dataGara}"></td>
+                <td><button type="button">Iscriviti</button></td>
             </tr>
         </tbody>
         <P></P>
@@ -46,9 +47,11 @@
         <thead>
             <tr>
                 <th>codice Fiscale</th>
-                <th>Nominativo</th>
+                <th>Nominativo</th>   
                 <th>età</th>
+                <th>altezza</th>
                 <th>peso</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -56,6 +59,7 @@
                 <td th:text="${velocisti.codiceFiscale}"></td>
                 <td th:text="${velocisti.nominativo}"></td>
                 <td th:text="${velocisti.eta}"></td>
+                <td th:text="${velocisti.altezza}"></td>
                 <td th:text="${velocisti.peso}"></td>
             </tr>
         </tbody>

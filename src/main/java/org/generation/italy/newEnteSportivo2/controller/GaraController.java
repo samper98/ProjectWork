@@ -31,22 +31,15 @@ public class GaraController {
 	
 	@GetMapping("/elenco")
 	public String elencoGara(
-			Model model) {
+			Model model
+			) {
 		 
+//		List<Gara> elencoGara=garaRepository.findByLuogo(luogo);
 		List<Gara> elencoGara=garaRepository.findAll();
+		
 		List<Velocista> elencoVelocisti=velocistiRepository.findAll();
-//		ArrayList<Gara> elencoGara=(ArrayList<Gara>) garaRepository.findAll();
-//	
-//		
-//		StringBuilder elenco=new StringBuilder();
-//		elenco.append("elenco gare: " + elencoGara.size());
-//		elenco.append("<br><br>");
-//		for (Gara g:elencoGara) {
-//			elenco.append(g.getIdGara()+ "<br>");
-//			elenco.append(g.getLuogo()+ "<br>");
-//			elenco.append(g.getDataGara()+ "<br>");
-//			
-//		}
+
+		
 		model.addAttribute("elencogare",elencoGara);
 		model.addAttribute("elencovelocisti",elencoVelocisti);
 		return "/gara/elencogara";
@@ -57,22 +50,7 @@ public class GaraController {
 	
 	
 	
-//	@GetMapping("/dettaglio/{id}")			//gestisce una richiesta GET all'indirizzo /Fornitori/elenco
-//	@ResponseBody
-//	public String dettaglioGara(@PathVariable Integer id) {
-//		Optional<Gara> optGara=garaRepository.findById(id);
-//		if (optGara.isPresent())		//il prodotto è stato trovato
-//		{
-//			StringBuilder dettaglio=new StringBuilder();
-//			dettaglio.append(optGara.get().toString()+"<br>");
-//			dettaglio.append("elenco gare : <br>");
-//			for (Gara g: optGara.get().getIdGara())
-//				dettaglio.append(g.toString()+"<br>");
-//			return dettaglio.toString();
-//		}			
-//		else
-//			return "Velocista non trovato";}
-	
+
 	
 }
 
