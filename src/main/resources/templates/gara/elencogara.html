@@ -51,6 +51,20 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Gare </title>
+	<script type=”text/javascript” src=”jquery.js”></script>
+				<script type=”text/javascript” src=”tablesorter.js”></script>
+
+			#	Tra i tag head della pagina inserite il codice js:
+
+				<script type=”text/javascript”>
+
+$(document).ready(function()
+{
+$(“table“).tablesorter();
+}
+);
+
+</script>
 </head>
 
 <body>
@@ -66,6 +80,7 @@
 		<tbody>
 
 			<tr th:each="gara : ${elencogare}">
+				
 				<td th:text="${gara.idGara}"></td>
 				<td th:text="${gara.luogo}"></td>
 				<td th:text="${gara.dataGara}"></td>
