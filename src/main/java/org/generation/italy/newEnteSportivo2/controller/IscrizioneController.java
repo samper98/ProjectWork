@@ -34,23 +34,29 @@ public class IscrizioneController {
 	model.addAttribute("elencoiscritti",elencoIscritti);
 	return"gara/iscrizione";
 	}
+	
 	@GetMapping("/nuovo/{idGara}")
 	public String nuovaIscrizioneGet(Model model,
 			@PathVariable Integer idGara) {
 		Iscrizione i=new Iscrizione();
+		List<Iscrizione> elencoIscrizioni=iscrizioneRepository.findAll();
+		model.addAttribute("elencoIscrizioni", elencoIscrizioni);
 		model.addAttribute("iscizione", i);
 		return "iscrizione/nuovo";
 	}
 	
 	@PostMapping("/nuovo/{idGara}")
 	public String nuovaIscrizionePost(Model model,
-			@PathVariable Integer idGara,
 			@Valid @ModelAttribute ("iscrizione")
 			Iscrizione i,BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			List<Iscrizione> elencoIscrizioni=iscrizioneRepository.findAll();
+			model.addAttribute("elencoIscrizioni", elencoIscrizioni);
+			model.addAttribute("iscizione", i);
+			return "iscrizione/nuovo";
+		}
 		iscrizioneRepository.save(i);
 		return "redirect:/gara/elencogara";
 	}
-	
-	
 
 }
