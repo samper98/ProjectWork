@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+	
+<head>
+<meta charset="ISO-8859-1">
+<title>Nuova iscrizione</title>
+<meta th:replace="fragments/resources :: head">
+</head>
+<body>
+	<h1>Nuova iscrizione</h1>
+	<hr><form 
+		id="form-iscrizione"
+		th:action="@{/iscrizione/nuova}"
+		th:object="${iscizione}"
+		method="post"> 
+
+<label class="form-label" for="codiceFiscale">Codice fiscale</label>
+				<input type="text" class="form-control" id="codiceFiscale" th:field="*{Velocista.codiceFiscale}" maxlength="16" minlength="16">
+
+         <form th:action="@{/iscrizione/nuova}" method="get">
+        <button type="submit">conferma iscrizione</button>
+     
+</body>
+</html>

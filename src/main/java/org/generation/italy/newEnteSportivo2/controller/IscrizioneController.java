@@ -7,8 +7,14 @@ import org.generation.italy.newEnteSportivo2.repository.IscrizioneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/iscrizione")
@@ -28,5 +34,23 @@ public class IscrizioneController {
 	model.addAttribute("elencoiscritti",elencoIscritti);
 	return"gara/iscrizione";
 	}
+	@GetMapping("/nuovo/{idGara}")
+	public String nuovaIscrizioneGet(Model model,
+			@PathVariable Integer idGara) {
+		Iscrizione i=new Iscrizione();
+		model.addAttribute("iscizione", i);
+		return "iscrizione/nuovo";
+	}
+	
+	@PostMapping("/nuovo/{idGara}")
+	public String nuovaIscrizionePost(Model model,
+			@PathVariable Integer idGara,
+			@Valid @ModelAttribute ("iscrizione")
+			Iscrizione i,BindingResult bindingResult) {
+		iscrizioneRepository.save(i);
+		return "redirect:/gara/elencogara";
+	}
+	
+	
 
 }

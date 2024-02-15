@@ -1,0 +1,44 @@
+@charset "ISO-8859-1";
+	table {
+		width: 80%;
+		border-collapse: collapse;
+	}
+
+	th,
+	td {
+		padding: 8px;
+		text-align: left;
+		border-bottom: 1px solid #ddd;
+	}
+
+	th {
+		background-color: #f2f2f2;
+	}
+
+	.button {
+		background-color: #808080;
+		/* Colore di sfondo bianco panna */
+		border: none;
+		color: #ffffff;
+		/* Colore del testo verde */
+		padding: 15px 32px;
+		/* Spaziatura interna (alto/basso, sinistra/destra) */
+		text-align: center;
+		/* Allinea il testo al centro */
+		text-decoration: none;
+		display: inline-block;
+		font-size: 13px;
+		margin: 4px 2px;
+		cursor: pointer;
+		border-radius: 8px;
+		/* Bordo arrotondato */
+		transition-duration: 0.5s;
+		/* Animazione al passaggio del mouse */
+	}
+
+	.button:hover {
+		background-color: #00805e;
+		/* Cambia colore di sfondo al passaggio del mouse */
+		color: #ffffff;
+		/* Cambia colore del testo al passaggio del mouse (verde scuro) */
+	}

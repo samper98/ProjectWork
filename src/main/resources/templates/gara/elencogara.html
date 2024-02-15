@@ -2,120 +2,84 @@
 
 
 <html xmlns:th="http://www.thymeleaf.org/">
-<style>
-	table {
-		width: 80%;
-		border-collapse: collapse;
-	}
-
-	th,
-	td {
-		padding: 8px;
-		text-align: left;
-		border-bottom: 1px solid #ddd;
-	}
-
-	th {
-		background-color: #f2f2f2;
-	}
-
-	.button {
-		background-color: #808080;
-		/* Colore di sfondo bianco panna */
-		border: none;
-		color: #ffffff;
-		/* Colore del testo verde */
-		padding: 15px 32px;
-		/* Spaziatura interna (alto/basso, sinistra/destra) */
-		text-align: center;
-		/* Allinea il testo al centro */
-		text-decoration: none;
-		display: inline-block;
-		font-size: 13px;
-		margin: 4px 2px;
-		cursor: pointer;
-		border-radius: 8px;
-		/* Bordo arrotondato */
-		transition-duration: 0.5s;
-		/* Animazione al passaggio del mouse */
-	}
-
-	.button:hover {
-		background-color: #00805e;
-		/* Cambia colore di sfondo al passaggio del mouse */
-		color: #ffffff;
-		/* Cambia colore del testo al passaggio del mouse (verde scuro) */
-	}
-</style>
 
 
-
+<link th:rel="stylesheet" href="/src/main/resources/templates/gara/elencogare.css">
 
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Gare </title>
+
+	<meta th:replace="fragments/resources :: head">
 </head>
 
 <body>
 	<h2>ELENCO GARE </h2>
 	<!--<button class="button">ordina per lugo</button>-->
 
-	<form th:action="@{/gara/ordina-gare}" method="get">
+	</form>
+<div style="margin-top: 3%;">
+	<form style="margin-left: 10%;margin-bottom: -2.1%;" th:action="@{/gara/ordina-gare}" method="get">
 		<button type="submit">ordina per luogo</button>
 	</form>
 
-	<form th:action="@{/gara/elenco}" method="get">
-		<button type="submit">ordina per data</button>
-	</form>
+		<form th:action="@{/gara/elenco}" method="get">
+			<button type="submit">ordina per data</button>
+		</form>
 
-	<table>
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>luogo</th>
-				<th>data ora luogo</th>
-			</tr>
-		</thead>
-		<tbody>
+		<table class="table table-success table-striped table-hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>luogo</th>
+					<th>data ora luogo</th>
+					<th>Iscrizione</th>
+				</tr>
+			</thead>
+			<tbody>
 
-			<tr th:each="gara : ${elencogare}">
+				<tr th:each="gara : ${elencogare}">
 
-				<td th:text="${gara.idGara}"></td>
-				<td th:text="${gara.luogo}"></td>
-				<td th:text="${gara.dataGara}"></td>
-				<td>
-					<form th:action="@{/iscrizione/elenco}" method="get">
-						<button type="submit">iscriviti</button>
-					</form>
-				</td>
-			</tr>
-		</tbody>
-		<P></P>
-		<P></P>
-	</table>
-	<h2>ELENCO DEI VELOCISTI </h2>
-	<table>
-		<thead>
-			<tr>
-				<th>codice Fiscale</th>
-				<th>Nominativo</th>
-				<th>età</th>
-				<th>altezza</th>
-				<th>peso</th>
+					<td th:text="${gara.idGara}"></td>
+					<td th:text="${gara.luogo}"></td>
+					<td th:text="${gara.dataGara}"></td>
+					<td>
+						<a class="btn btn-success mb-2" th:href=|/iscrizione/nuovo/${gara.idGara}|><i
+								class="fa-solid fa-plus"></i> Iscrizione</a>
+						<!--<a th:href="|/iscrizione/nuovo/${gara.idGara}|" ><i class="fa-solid fa-plus"></i> Iscrizione</a>-->
+					</td>
 
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="velocisti : ${elencovelocisti}">
-				<td th:text="${velocisti.codiceFiscale}"></td>
-				<td th:text="${velocisti.nominativo}"></td>
-				<td th:text="${velocisti.eta}"></td>
-				<td th:text="${velocisti.altezza}"></td>
-				<td th:text="${velocisti.peso}"></td>
-			</tr>
-		</tbody>
-	</table>
+
+				</tr>
+			</tbody>
+			<P></P>
+			<P></P>
+		</table>
+		<h2>ELENCO DEI VELOCISTI </h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>codice Fiscale</th>
+					<th>Nominativo</th>
+					<th>età</th>
+					<th>altezza</th>
+					<th>peso</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="velocisti : ${elencovelocisti}">
+					<td th:text="${velocisti.codiceFiscale}"></td>
+					<td th:text="${velocisti.nominativo}"></td>
+					<td th:text="${velocisti.eta}"></td>
+					<td th:text="${velocisti.altezza}"></td>
+					<td th:text="${velocisti.peso}"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<script th:replace="fragments/resources :: scripts"></script>
 
 </body>
-
+</div>
 </html>
