@@ -48,8 +48,8 @@
 	}
 </style>
 
- 
-	                          
+
+
 
 <head>
 	<meta charset="ISO-8859-1">
@@ -59,15 +59,15 @@
 <body>
 	<h2>ELENCO GARE </h2>
 	<!--<button class="button">ordina per lugo</button>-->
-	  
-    <form th:action="@{/gara/ordina-gare}" method="get">
-        <button type="submit">ordina per luogo</button>
-    </form>
-    
-      <form th:action="@{/gara/ordina-per-data}" method="get">
-        <button type="submit">ordina per data</button>
-    </form>
-    
+
+	<form th:action="@{/gara/ordina-gare}" method="get">
+		<button type="submit">ordina per luogo</button>
+	</form>
+
+	<form th:action="@{/gara/elenco}" method="get">
+		<button type="submit">ordina per data</button>
+	</form>
+
 	<table>
 		<thead>
 			<tr>
@@ -79,13 +79,15 @@
 		<tbody>
 
 			<tr th:each="gara : ${elencogare}">
-				
+
 				<td th:text="${gara.idGara}"></td>
 				<td th:text="${gara.luogo}"></td>
 				<td th:text="${gara.dataGara}"></td>
-				<td><form th:action="@{/iscrizione/elenco}" method="get">
-        <button type="submit">iscriviti</button>
-    </form></td>
+				<td>
+					<form th:action="@{/iscrizione/elenco}" method="get">
+						<button type="submit">iscriviti</button>
+					</form>
+				</td>
 			</tr>
 		</tbody>
 		<P></P>
