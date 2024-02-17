@@ -1,4 +1,4 @@
-package org.generation.italy.newEnteSportivo2.servlet;
+package org.generation.italy.newEnteSportivo2.model_jdbc.dao;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

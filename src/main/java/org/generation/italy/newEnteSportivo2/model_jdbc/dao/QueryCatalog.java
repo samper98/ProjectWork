@@ -1,4 +1,4 @@
-package org.generation.italy.newEnteSportivo2.servlet;
+package org.generation.italy.newEnteSportivo2.model_jdbc.dao;
 
 public class QueryCatalog {
 	
