@@ -155,4 +155,25 @@ public class IscrizioneDao extends ADao {
 
 		}
 	}
+	
+	public void DeleteIscrizione(Iscrizione iscrizione) throws EnteSportivoModelException {
+
+		try {
+            Trigger.checkLimiteIscrizioni(iscrizione);
+            
+			PreparedStatement preparedStatement = this.jdbcConnectionToDatabase
+					.prepareStatement(QueryCatalog.deleteIscrizione);
+
+		//	preparedStatement.setTimestamp(1,Timestamp.valueOf(iscrizione.getDataOraIscrizione()));
+			preparedStatement.setString(1, iscrizione.getCodiceFiscale());
+			preparedStatement.setLong(2, iscrizione.getIdGara());
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException sqlException) {
+
+			throw new EnteSportivoModelException("IscrizioneDao -> deleteIscrizione  -> " + sqlException.getMessage());
+
+		}
+	}
 }
