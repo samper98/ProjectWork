@@ -43,7 +43,7 @@ public class Utente {
 		return password;
 	}
 
-	public Set<Ruolo> getVelocisti() {
+	public Set<Ruolo> getRuoli() {
 		return ruoli;
 	}
 	

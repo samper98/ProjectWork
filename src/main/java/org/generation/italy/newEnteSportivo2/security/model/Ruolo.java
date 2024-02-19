@@ -13,4 +13,23 @@ public class Ruolo {
 	@NotNull
 	private String name;    // nome del ruolo (es: admin,user,...)
 
+	public Ruolo() {
+		super();
+	}
+
+	public Ruolo(Integer id, @NotNull String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	
 }
