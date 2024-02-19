@@ -13,7 +13,5 @@ public class UserMessages {
    
 	public static final String msgEsitoOkIscrizione ="Iscrizione effettuata";
 	public static final String msgErroreIscrizione =" Errore nei dati inseriti ";
-	public static final String msgCancellazioneOkIscrizione ="Iscrizione cancellata";
-	public static final String msgErroreCancellazioneIscrizione =" Errore nella cancellazione dell'iscrizione";
 }
 ///

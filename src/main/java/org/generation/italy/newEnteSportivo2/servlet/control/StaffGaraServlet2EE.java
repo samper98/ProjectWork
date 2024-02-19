@@ -289,42 +289,5 @@ public class StaffGaraServlet2EE extends HttpServlet {
 //
 //	}
 	
-	public void actionCancellazioneIscrizione(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String messageToShow = UserMessages.msgCancellazioneOkIscrizione;
-		Long id = Long.parseLong(request.getParameter("id-gara")); // get0 parameter ti salva la vita , getParameter lavora
-																// sui tipi di stringhe
-		System.out.println("Id gara" + id);
-		// String dataOraIscrizioneString = request.getParameter("data_iscrizione") !=
-		// null ? request.getParameter("data_iscrizione") : "";
-		String codiceFiscaleString = request.getParameter("codice_fiscale") != null
-				? request.getParameter("codice_fiscale")
-				: "";
-
-		// LocalDateTime dataOraiscrizione =
-		// LocalDateTime.parse(dataOraIscrizioneString);
-		Iscrizione iscrizione = new Iscrizione(codiceFiscaleString, id);
-
-		try {
-			TestJdbcEnteSportivo testJdbcEnteSportivo = new TestJdbcEnteSportivo();
-			testJdbcEnteSportivo.getIscrizioneDao().DeleteIscrizione(iscrizione);
-
-			messageToShow = UserMessages.msgCancellazioneOkIscrizione;
-         
-		} catch (EnteSportivoModelException e) {
-		
-			messageToShow = UserMessages.msgErroreCancellazioneIscrizione;
-			// htmlContentPage = e.getMessage().getBytes();
-
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		request.setAttribute("message-to-show", messageToShow);
-		// imposta il parametro nominativoUtenteLoggato
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/message.jsp");
-		// ottiene il riferimento alla apgina JSP
-		dispatcher.forward(request, response);
-	}
 
 }

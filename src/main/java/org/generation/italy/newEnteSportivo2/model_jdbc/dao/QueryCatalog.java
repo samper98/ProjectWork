@@ -72,9 +72,6 @@ public class QueryCatalog {
 	public static final String insertPartecipazione = 
 			" INSERT INTO partecipazione (tempo, codice_fiscale, id_gara) VALUES (?, ?, ?) ";
 	
-	public static final String deleteIscrizione = 
-			" DELETE FROM iscrizione (data_iscrizione, codice_fiscale, id_gara) VALUES (NOW(), ?, ?) ";
-	
 	
 	
 	
