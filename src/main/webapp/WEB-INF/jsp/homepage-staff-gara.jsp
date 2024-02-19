@@ -31,7 +31,7 @@
 	   <h1><Strong style="color:orange">&#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 
 	    &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160   STAFF GARA</Strong> </h1>
 	<br>
-<a class="btn btn-success " style="background-color:orange;" href="/ente-sportivo/form-gara">  
+<a class="btn btn-success " style="background-color:orange;" href="/ente-sportivo/homepage-staff-gara/form-gara">  
 			Nuova Gara  </a>
 
 	<div class="conteiner" align="left">
@@ -100,15 +100,15 @@
 						<td><c:out value="${gara.luogo}" /></td>
 						<td><c:out value="${gara.dataGara}" /></td>
 						<td><a class="btn btn-success" style="background-color:orange;"
-							href="/ente-sportivo/visualizza-iscritti-staff?id=
+							href="/ente-sportivo/homepage-staff-gara/visualizza-iscritti-staff?id=
 						<c:out value="${gara.idGara}" />">
 								Visualizza Iscritti</a></td>
 								<td><a class="btn btn-success" style="background-color:orange;"
-								href="/ente-sportivo/form-modifica-gara?id-gara=
+								href="/ente-sportivo/homepage-staff-gara/form-modifica-gara?id-gara=
 							<c:out value='${gara.idGara}' />" >Modifica 
 								</a>
 									<a class="btn btn-success" style="background-color:orange;" onclick="confermaEliminazione(event)"
-							href="/ente-sportivo/elimina-gara?id=<c:out value='${gara.idGara}' />" >Elimina 
+							href="/ente-sportivo/homepage-staff-gara/elimina-gara?id=<c:out value='${gara.idGara}' />" >Elimina 
 								</a></td>
 					
 

@@ -43,7 +43,7 @@
 						<td><c:out value="${velocistaIscrittiGara.nominativo}" /></td>
 						<td><c:out value="${velocistaIscrittiGara.eta}" /></td>
 						 <td><a class="btn btn-success" style="background-color: orange;" onclick="confermaEliminazione(event)"
-								href="/ente-sportivo/elimina-iscritto?id=${idgara}&nominativo=${velocistaIscrittiGara.nominativo}">
+								href="/ente-sportivo/homepage-staff-gara/elimina-iscritto?id=${idgara}&nominativo=${velocistaIscrittiGara.nominativo}">
 								Elimina </a></td>
 						
 						

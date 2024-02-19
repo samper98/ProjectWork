@@ -24,7 +24,7 @@
             <h1> Nuova gara </h1>
         </center>
 		
-		<form action="/ente-sportivo/gara" method="post">
+		<form action="/ente-sportivo/homepage-staff-gara/gara" method="post">
 		
 			
 			

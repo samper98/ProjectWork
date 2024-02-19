@@ -211,7 +211,7 @@ public class VelocistaServlet2EE extends HttpServlet {
 		request.setAttribute("message-to-show", messageToShow);
 		// imposta il parametro nominativoUtenteLoggato
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("message.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/message.jsp");
 		// ottiene il riferimento alla apgina JSP
 		dispatcher.forward(request, response);
 	}
@@ -221,7 +221,7 @@ public class VelocistaServlet2EE extends HttpServlet {
 		// throws BancaControlException, BancaModelException {
 		Long id = Long.parseLong(request.getParameter("id-gara"));
 		request.setAttribute("id-gara", id);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("form-iscrizione.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/form-iscrizione.jsp");
 		// ottiene il riferimento alla pagina JSP
 		dispatcher.forward(request, response);
 
@@ -250,7 +250,7 @@ public class VelocistaServlet2EE extends HttpServlet {
 		request.setAttribute("listaPartecipanti", elencoVelocistaPartecipantiGara); // ASSOCIARE E LAVORARE CON JSTL SU
 																					// L'APPOSITA
 		// PAGINA JSP
-		RequestDispatcher dispatcher = request.getRequestDispatcher("visualizza-dettaglio.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/visualizza-dettaglio.jsp");
 		// ottiene il riferimento alla pagina JSP
 
 		dispatcher.forward(request, response);
@@ -308,7 +308,7 @@ public class VelocistaServlet2EE extends HttpServlet {
 		request.setAttribute("listaIscritti", elencoVelocistiIscrittiGara); // ASSOCIARE E LAVORARE CON JSTL SU
 																					// L'APPOSITA
 		// PAGINA JSP
-		RequestDispatcher dispatcher = request.getRequestDispatcher("visualizza-iscritti.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/visualizza-iscritti.jsp");
 		// ottiene il riferimento alla pagina JSP
 
 		dispatcher.forward(request, response);

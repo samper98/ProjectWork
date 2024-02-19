@@ -94,11 +94,11 @@
 						<td><c:out value="${gara.luogo}" /></td>
 						<td><c:out value="${gara.dataGara}" /></td>
 						<td><a class="btn btn-success"
-							href="/ente-sportivo/visualizza-iscritti?id=
+							href="/ente-sportivo/homepage-velocista/visualizza-iscritti?id=
 						<c:out value="${gara.idGara}" />">
 								Visualizza Iscritti</a></td>
 						<td><a class="btn btn-success"
-							href="/ente-sportivo/form-iscrizione?id-gara=
+							href="/ente-sportivo/homepage-velocista/form-iscrizione?id-gara=
 							<c:out value='${gara.idGara}' />">
 								Iscriviti </a></td>
 

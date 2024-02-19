@@ -24,7 +24,7 @@
             <h1> Modifica Dati Gara </h1>
         </center>
 		
-		<form action="/ente-sportivo/modifica-gara" method="post">
+		<form action="/ente-sportivo/homepage-staff-gara/modifica-gara" method="post">
 		
 			
 			

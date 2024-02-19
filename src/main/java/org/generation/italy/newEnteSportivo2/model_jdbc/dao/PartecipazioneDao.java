@@ -97,8 +97,8 @@ public class PartecipazioneDao extends ADao {
 
 				}
 										
-				
-			
+				VelocistaPartecipanteGara velocistaPartecipanteGara = new VelocistaPartecipanteGara( nominativo, eta, tempo);
+			    elencoVelocistiPartecipantiGara.add(velocistaPartecipanteGara);	
 		//	elencoVelocistiPartecipantiGara = loadVelocistaByQuery(preparedStatement);
 
 			
