@@ -10,6 +10,7 @@ import org.generation.italy.newEnteSportivo2.model_jdbc.entity.Gara;
 import org.generation.italy.newEnteSportivo2.model_jdbc.entity.Iscrizione;
 import org.generation.italy.newEnteSportivo2.model_jdbc.entity.VelocistaIscrizioneGara;
 import org.generation.italy.newEnteSportivo2.model_jdbc.entity.VelocistaPartecipanteGara;
+import org.springframework.stereotype.Component;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -18,6 +19,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+@Component
 @WebServlet(urlPatterns = { "/homepage-velocista", "/visualizza-dettaglio", "/form-iscrizione", "/iscrizione","/visualizza-iscritti" })
 public class VelocistaServlet2EE extends HttpServlet {
 
