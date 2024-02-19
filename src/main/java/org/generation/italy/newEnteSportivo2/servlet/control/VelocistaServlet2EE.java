@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-@WebServlet(urlPatterns = { "/homepage-velocista", "/visualizza-dettaglio", "/form-iscrizione", "/iscrizione","/visualizza-iscritti" })
+@WebServlet
 public class VelocistaServlet2EE extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -57,8 +57,12 @@ public class VelocistaServlet2EE extends HttpServlet {
 																					// metodo GET inviato dal client
 																					// (browser)
 			throws ServletException, IOException {
-		System.out.println("DO GET ENTRATO");
-		System.out.println(request.getServletPath());
+		System.out.println("gettolo ENTRATO");
+		System.out.println("path " + request.getServletPath());
+		
+		System.out.println("path info: " + request.getPathInfo());
+		
+		
 		executeAction(request, response); // re-inoltra al metodo doGet la gestione della action | request e response
 											// sono istanze di tipo HttpServletRequest ed HttpServletResponse, create
 											// dal container per fornire a e ricevere dalla servlet i dettagli circa i
@@ -76,34 +80,41 @@ public class VelocistaServlet2EE extends HttpServlet {
 																							// (browser)
 			throws ServletException, IOException {
 
-		String actionName = request.getServletPath()+request.getPathInfo(); // parte action della URI: gestione della azione applicativa, la
-		System.out.println("Action name: " + actionName); // parte della URL dopo il nome della webapp...
+		String actionName;
+		if (request.getPathInfo() != null)
+		 actionName = request.getServletPath()+request.getPathInfo(); // parte action della URI: gestione della azione applicativa, la
+		
+		else
+			 actionName = request.getServletPath();
+			
+		System.out.println("Azione: " + actionName.toLowerCase().trim()); // parte della URL dopo il nome della webapp...
 
 		switch (actionName.toLowerCase().trim()) {
 
 		// http://localhost:8080/JDBCente_sportivo/lista-gare
-		case "/homepage-velocista":
+		case "/ente-sportivo/homepage-velocista":
 			actionHomePageVelocista(request, response);
 
 			// System.out.println("Azione intereccettata");
 			break;
-		case "/visualizza-dettaglio":
+		case "/ente-sportivo/homepage-velocista/visualizza-dettaglio":
 			System.out.println("Azione intercettata");
+			
 			// actionVisualizzaDettaglioGarePartecipate(request, response);
 			// actionVisualizzaDettaglioGarePartecipate1(request, response);
 			// actionVisualizzaDettaglioGarePartecipate2(request, response);
 			actionVisualizzaDettaglioVelocistiPartecipantiGara(request, response);
 			break;
-		case "/form-iscrizione":
+		case "/ente-sportivo/homepage-velocista/form-iscrizione":
 			System.out.println("azione :" + actionName);
 			actionFormIscrizione(request, response);
 			break;
-		case "/iscrizione":
+		case "/ente-sportivo/homepage-velocista/iscrizione":
 			System.out.println("azione" + actionName);
 			actionIscrizione(request, response);
 
 			break;
-		case "/visualizza-iscritti":
+		case "/ente-sportivo/homepage-velocista/visualizza-iscritti":
 			actionVisualizzaDettaglioVelocistiIscrittiGara(request, response);
 			break;
 		default:
@@ -117,6 +128,8 @@ public class VelocistaServlet2EE extends HttpServlet {
 
 		String messageToShow = UserMessages.msgEsitoOkVisualizzazioneLista;
 		String ordina = request.getParameter("ordinamento");
+		
+		System.out.println("action homepage velocista");
 
 		List<Gara> elencoGare = new ArrayList<>();
 
@@ -136,7 +149,7 @@ public class VelocistaServlet2EE extends HttpServlet {
 			messageToShow = UserMessages.msgErroreVisualizzazioneLista;
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("homepage-velocista.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/homepage-velocista.jsp");
 		// ottiene il riferimento alla pagina JSP
 		dispatcher.forward(request, response);
 	}

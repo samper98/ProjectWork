@@ -62,7 +62,7 @@
 						<td><c:out value="${gara.luogo}" /></td>
 						<td><c:out value="${gara.dataGara}" /></td>
 						<td><a class="btn btn-success"
-							href="/ente-sportivo/visualizza-dettaglio?id=
+							href="/ente-sportivo/homepage-velocista/visualizza-dettaglio?id=
 							<c:out value="${gara.idGara}" />">Visualizza
 								Dettaglio</a></td>
 					</tr>

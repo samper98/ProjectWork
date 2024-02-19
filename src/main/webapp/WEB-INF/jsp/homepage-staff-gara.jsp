@@ -66,7 +66,7 @@
 						<td><c:out value="${gara.luogo}" /></td>
 						<td><c:out value="${gara.dataGara}" /></td>
 						<td><a class="btn btn-success" style="background-color:orange;"
-							href="/ente-sportivo/visualizza-dettaglio-staff?id=
+							href="/ente-sportivo/homepage-staff-gara/visualizza-dettaglio-staff?id=
 							<c:out value="${gara.idGara}" />">Visualizza
 								Dettaglio</a></td>
 								

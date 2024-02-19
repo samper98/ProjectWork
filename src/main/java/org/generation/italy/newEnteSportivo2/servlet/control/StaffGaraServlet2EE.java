@@ -21,9 +21,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-@WebServlet(urlPatterns = {"/homepage-staff-gara","/visualizza-dettaglio-staff","/visualizza-iscritti-staff",
-		                   "/form-gara","/gara","/form-modifica-gara","/modifica-gara","/elimina-gara",
-		                   "/elimina-iscritto"})
+@WebServlet
 public class StaffGaraServlet2EE extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -78,8 +76,14 @@ public class StaffGaraServlet2EE extends HttpServlet {
 																							// GET inviato dal client
 																							// (browser)
 			throws ServletException, IOException {
+		String actionName;
+		if (request.getPathInfo() != null)
+			 actionName = request.getServletPath()+request.getPathInfo(); // parte action della URI: gestione della azione applicativa, la
+			
+			else
+				 actionName = request.getServletPath();
 
-		String actionName = request.getServletPath()+request.getPathInfo(); // parte action della URI: gestione della azione applicativa, la
+		
 		System.out.println("Action name: " + actionName); // parte della URL dopo il nome della webapp...
 
 		switch (actionName.toLowerCase().trim()) {
@@ -90,30 +94,30 @@ public class StaffGaraServlet2EE extends HttpServlet {
 
 			// System.out.println("Azione intereccettata");
 			break;
-		case "/ente-sportivo/visualizza-dettaglio-staff":
+		case "/ente-sportivo/homepage-staff-gara/visualizza-dettaglio-staff":
 			System.out.println("Azione intercettata");
 		
 			actionVisualizzaDettaglioVelocistiPartecipantiGara(request, response);
 			break;
-		case "/ente-sportivo/visualizza-iscritti-staff":
+		case "/ente-sportivo/homepage-staff-gara/visualizza-iscritti-staff":
 			actionVisualizzaDettaglioVelocistiIscrittiGara(request, response);
 			break;
-		case "/ente-sportivo/form-gara":
+		case "/ente-sportivo/homepage-staff-gara/form-gara":
 			actionFormNuovaGara(request, response);
 			break;
-		case "/ente-sportivo/gara":
+		case "/ente-sportivo/homepage-staff-gara/gara":
 		  actionNuovaGara(request, response);
 		break;
-		case "/ente-sportivo/form-modifica-gara":
+		case "/ente-sportivo/homepage-staff-gara/form-modifica-gara":
 			actionFormModificaDatiGara(request, response);
 			break;
-		case "/ente-sportivo/modifica-gara":
+		case "/ente-sportivo/homepage-staff-gara/modifica-gara":
 			actionModificaDatiGara(request, response);
 			break;
-		case "/ente-sportivo/elimina-gara":
+		case "/ente-sportivo/homepage-staff-gara/elimina-gara":
 			actionEliminazioneGara(request, response);
 	
-		case  "/ente-sportivo/elimina-iscritto":
+		case  "/ente-sportivo/homepage-staff-gara/elimina-iscritto":
 			actionEliminaIscritto(request, response);
 		break;
 		default:
