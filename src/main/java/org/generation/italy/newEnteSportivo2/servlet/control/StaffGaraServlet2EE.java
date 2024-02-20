@@ -117,7 +117,7 @@ public class StaffGaraServlet2EE extends HttpServlet {
 			break;
 		case "/ente-sportivo/homepage-staff-gara/elimina-gara":
 			actionEliminazioneGara(request, response);
-	
+			break;
 		case  "/ente-sportivo/homepage-staff-gara/elimina-iscritto":
 			actionEliminaIscritto(request, response);
 		break;
@@ -125,8 +125,11 @@ public class StaffGaraServlet2EE extends HttpServlet {
 			actionElencoVelocisti(request, response);
 			break;
 		case "/ente-sportivo/homepage-staff-gara/velocista":
+			System.out.println("post velocista");
 			actionVelocista(request, response);
+			break;
 		case "/ente-sportivo/homepage-staff-gara/form-velocista":
+			System.out.println("get velocista");
 			actionFormVelocista(request, response);
 			break;
 		default:
@@ -442,7 +445,7 @@ String luogo = request.getParameter("luogo") != null ? request.getParameter("luo
 		}
 		request.setAttribute("message-to-show", messageToShow);
 //		// imposta il parametro nominativoUtenteLoggato
-
+		System.out.println("velocista aggiunto");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/message-staff-velocista.jsp");
 		// ottiene il riferimento alla apgina JSP
 		dispatcher.forward(request, response);

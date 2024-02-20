@@ -146,7 +146,7 @@ public class VelocistaServlet2EE extends HttpServlet {
 	    } catch (EnteSportivoModelException e) {
 	        messageToShow = UserMessages.msgErroreVisualizzazioneLista;
 	    }
-
+	    System.out.println("chiamata pagina jsp");
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/homepage-velocista.jsp");
 	    dispatcher.forward(request, response);
 	}

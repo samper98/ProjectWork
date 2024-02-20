@@ -29,8 +29,10 @@ public class MainController {
 		if (staff)
 		
 			return "redirect:/ente-sportivo/homepage-staff-gara";
-		else 
+		else {
+			System.out.println("homepage velocista");
 			return "redirect:/ente-sportivo/homepage-velocista";
+		}
 	}
 	
 }
