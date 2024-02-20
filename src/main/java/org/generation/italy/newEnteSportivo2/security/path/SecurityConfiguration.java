@@ -20,48 +20,38 @@ public class SecurityConfiguration {
 	  SecurityFilterChain filterChain(HttpSecurity http) 
 	  	throws Exception {
 		    http		 
-		  //  .authorizeHttpRequests((requests) -> requests.anyRequest().authenticated()).formLogin((form) -> form.permitAll());/*
+		   // .authorizeHttpRequests((requests) -> requests.anyRequest().authenticated()).formLogin((form) -> form.permitAll());
 		    .authorizeHttpRequests((requests) -> requests
 		    	//richieste GET per nuovo, modifica, elimina prodotto richiedono il ruolo admin
 		    	.requestMatchers(
-					"/Prodotti/nuovo", 
-					"/Prodotti/modifica/**",
-					"/Prodotti/elimina/**",
-					"/Fornitori/nuovo", 
-					"/Fornitori/modifica/**",
-					"/Fornitori/elimina/**",
-					"/servlet/prodotti/formnuovo")
-				.hasAuthority("Admin")
+		    			"/ente-sportivo/homepage-staff-gara/**",				//necessarie per bootstrap e font awesome		
+						"/WEB-INF/jsp/**",
+						"/webjars/**",				//necessarie per bootstrap e font awesome
+						"/css/**",			
+						"/img/**",
+						"/error")
+				.hasAuthority("staff")
 				
 				//richieste POST per nuovo, modifica, elimina prodotto richiedono il ruolo admin			    
 				.requestMatchers(HttpMethod.POST,
-					"/Prodotti/nuovo", 
-					"/Prodotti/modifica/**",
-					"/Fornitori/nuovo", 
-					"/Fornitori/modifica/**",
-					"/servlet/prodotti/nuovo")
-				.hasAuthority("Admin")
+						"/ente-sportivo/homepage-staff-gara/**",				//necessarie per bootstrap e font awesome		
+						"/WEB-INF/jsp/**",
+						"/webjars/**",				//necessarie per bootstrap e font awesome
+						"/css/**",			
+						"/img/**",
+						"/error")
+				.hasAuthority("staff")
 			)
 		    
 		    .authorizeHttpRequests((requests) -> requests
 		    	//richieste get che richiedono solo di autenticarsi
-				.requestMatchers(
-					"/",
-					"/Prodotti",
-					"/Prodotti/elenco",
-					"/Prodotti/dettaglio/**",
-					"/Fornitori",
-					"/Fornitori/elenco",
-					"/Fornitori/dettaglio/**",
-					"/servlet/prodotti",
-					"/servlet/prodotti/elenco",
-					"/servlet/prodotti/dettaglio/**",
-					"/servlet/fornitori/**",
-					"/WEB-INF/jsp/**",
-					"/webjars/**",				//necessarie per bootstrap e font awesome
-					"/css/**",			
-					"/img/**",
-					"/error")
+				.requestMatchers("/",
+						"/ente-sportivo/homepage-velocista/**",				//necessarie per bootstrap e font awesome		
+						"/WEB-INF/jsp/**",
+						"/webjars/**",				//necessarie per bootstrap e font awesome
+						"/css/**",			
+						"/img/**",
+						"/error")
 				.authenticated()
 			)
 		    

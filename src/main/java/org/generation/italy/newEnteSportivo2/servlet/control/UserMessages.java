@@ -21,6 +21,9 @@ public class UserMessages {
     public static final String msgErroreModificaGara ="Errore nei dati inseriti";
     
     public static final String msgErroreEliminazioneGara ="Non puoi eliminare questa gara, assicurati prima di eliminare tutte le iscrizioni qui presenti ";
-  public  static final String msgOkEliminazione = "Eliminazione gara andata a buon fine ";
+    public  static final String msgOkEliminazione = "Eliminazione gara andata a buon fine ";
+  
+    public static final String msgOkVelocista = "E' stato aggiunto un nuovo velocista ";
+    public static final String msgErroreVelocista = "Errore nei dati di inserimento";
 }
 ///

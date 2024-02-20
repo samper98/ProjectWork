@@ -263,4 +263,31 @@ public class GaraDao extends ADao {
 
 		}
 		}
+		
+		public List<Gara> loadGareLikeLuogo(String cerca) throws EnteSportivoModelException {
+
+			Gara Gara = null;
+			List<Gara> elencoGara = new ArrayList<Gara>();
+			try {
+
+				
+
+				PreparedStatement preparedStatement = this.jdbcConnectionToDatabase
+						.prepareStatement(QueryCatalog.selectLuogoGaraLike);
+
+				preparedStatement.setString(1, cerca);
+
+				elencoGara = loadGaraByQuery(preparedStatement);
+
+				if (elencoGara.size() == 1) {
+					Gara = elencoGara.get(0);
+				}
+
+			} catch (SQLException sqlException) {
+
+				throw new EnteSportivoModelException("GaraDao -> loadGaraLikeByLuogo -> " + sqlException.getMessage());
+			}
+
+			return elencoGara;
+		}
 }

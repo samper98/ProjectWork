@@ -97,7 +97,31 @@ public class VelocistaDao extends ADao {
 	}
 
 	
-	
+	public List<Velocista> loadVelocista() throws EnteSportivoModelException {
+
+		Velocista velocista = null;
+
+		List<Velocista> elencoVelocisti = new ArrayList<Velocista>();
+
+		try {
+
+			PreparedStatement preparedStatement = this.jdbcConnectionToDatabase
+					.prepareStatement(QueryCatalog.selectFromVelocista);
+
+			elencoVelocisti = loadVelocistaByQuery(preparedStatement);
+
+			if (elencoVelocisti.size() == 1) {
+				velocista = elencoVelocisti.get(0);
+
+			}
+
+		} catch (SQLException sqlException) {
+
+			throw new EnteSportivoModelException("GaraDao -> loadVelocista -> " + sqlException.getMessage());
+		}
+
+		return elencoVelocisti;
+	}
 	
 	
 	

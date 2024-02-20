@@ -124,34 +124,31 @@ public class VelocistaServlet2EE extends HttpServlet {
 	}
 
 	private void actionHomePageVelocista(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	        throws ServletException, IOException {
 
-		String messageToShow = UserMessages.msgEsitoOkVisualizzazioneLista;
-		String ordina = request.getParameter("ordinamento");
-		
-		System.out.println("action homepage velocista");
+	    String messageToShow = UserMessages.msgEsitoOkVisualizzazioneLista;
+	    String ordina = request.getParameter("ordinamento");
+	    List<Gara> elencoGare = new ArrayList<>();
+	    String cerca = request.getParameter("ricerca");
+	    try {
+	        TestJdbcEnteSportivo testJdbcEnteSportivo = new TestJdbcEnteSportivo();
+	        if ("asc".equals(ordina)) {
+	            elencoGare = testJdbcEnteSportivo.getGaraDao().loadGaraOrderByLuogo();
+	        } else if ("data".equals(ordina)) {
+	        	
+	        	elencoGare = testJdbcEnteSportivo.getGaraDao().loadGaraByDataAndOra();
+	        } else if (cerca != null && !cerca.isEmpty()) { // Aggiunto controllo per il parametro di ricerca
+	            elencoGare = testJdbcEnteSportivo.getGaraDao().loadGareLikeLuogo(cerca);
+	        } else {
+	            elencoGare = testJdbcEnteSportivo.getGaraDao().loadGara();
+	        }
+	        request.setAttribute("listaGare", elencoGare);
+	    } catch (EnteSportivoModelException e) {
+	        messageToShow = UserMessages.msgErroreVisualizzazioneLista;
+	    }
 
-		List<Gara> elencoGare = new ArrayList<>();
-
-		try {
-			TestJdbcEnteSportivo testJdbcEnteSportivo = new TestJdbcEnteSportivo();
-			if (ordina == null) {
-				elencoGare = testJdbcEnteSportivo.getGaraDao().loadGara();
-			} else if ("asc".equals(ordina)) {
-				elencoGare = testJdbcEnteSportivo.getGaraDao().loadGaraOrderByLuogo();
-			} else if ("data".equals(ordina)){
-				elencoGare = testJdbcEnteSportivo.getGaraDao().loadGaraByDataAndOra();
-			}
-			request.setAttribute("ordina", ordina);		
-			request.setAttribute("listaGare", elencoGare);
-			// HttpSession httpSession = request.getSession();
-		} catch (EnteSportivoModelException e) {
-			messageToShow = UserMessages.msgErroreVisualizzazioneLista;
-		}
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/homepage-velocista.jsp");
-		// ottiene il riferimento alla pagina JSP
-		dispatcher.forward(request, response);
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/homepage-velocista.jsp");
+	    dispatcher.forward(request, response);
 	}
 
 	

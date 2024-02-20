@@ -75,6 +75,16 @@ public class QueryCatalog {
             " SELECT * " +
             "FROM gara " +
             "ORDER BY gara.data_ora_gara " ; 
+  
+  public static final String selectLuogoGaraLike =
+		    "SELECT * " +
+		    "FROM gara " +
+		    "WHERE gara.luogo LIKE CONCAT('%', ?, '%')";
+  
+  public static final String selectFromVelocista =
+
+          " SELECT * " +
+          "FROM velocista "  ;
 	 /////////////////////////// INSERT ///////////////////////////
 	
 	public static final String insertGara = 
@@ -115,6 +125,7 @@ public class QueryCatalog {
 			" INNER JOIN gara ON iscrizione.id_gara = gara.id_gara " +
 			" WHERE gara.id_gara = ? " +
 			" AND velocista.nominativo = ? "  ;
+	
 
 }
 

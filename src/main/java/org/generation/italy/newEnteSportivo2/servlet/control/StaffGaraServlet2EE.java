@@ -9,6 +9,7 @@ import org.generation.italy.newEnteSportivo2.model_jdbc.EnteSportivoModelExcepti
 import org.generation.italy.newEnteSportivo2.model_jdbc.TestJdbcEnteSportivo;
 import org.generation.italy.newEnteSportivo2.model_jdbc.entity.Gara;
 import org.generation.italy.newEnteSportivo2.model_jdbc.entity.Iscrizione;
+import org.generation.italy.newEnteSportivo2.model_jdbc.entity.Velocista;
 import org.generation.italy.newEnteSportivo2.model_jdbc.entity.VelocistaIscrizioneGara;
 import org.generation.italy.newEnteSportivo2.model_jdbc.entity.VelocistaPartecipanteGara;
 import org.springframework.stereotype.Component;
@@ -120,6 +121,14 @@ public class StaffGaraServlet2EE extends HttpServlet {
 		case  "/ente-sportivo/homepage-staff-gara/elimina-iscritto":
 			actionEliminaIscritto(request, response);
 		break;
+		case "/ente-sportivo/homepage-staff-gara/elenco-velocisti":
+			actionElencoVelocisti(request, response);
+			break;
+		case "/ente-sportivo/homepage-staff-gara/velocista":
+			actionVelocista(request, response);
+		case "/ente-sportivo/homepage-staff-gara/form-velocista":
+			actionFormVelocista(request, response);
+			break;
 		default:
 			break;
 			
@@ -128,30 +137,31 @@ public class StaffGaraServlet2EE extends HttpServlet {
 	}
 
 	private void actionHomePageStaffGara(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	        throws ServletException, IOException {
 
-		String messageToShow = UserMessages.msgEsitoOkVisualizzazioneLista;
-		String ordina = request.getParameter("ordinamento");
-		List<Gara> elencoGare = new ArrayList<>();
+	    String messageToShow = UserMessages.msgEsitoOkVisualizzazioneLista;
+	    String ordina = request.getParameter("ordinamento");
+	    List<Gara> elencoGare = new ArrayList<>();
+	    String cerca = request.getParameter("ricerca");
+	    try {
+	        TestJdbcEnteSportivo testJdbcEnteSportivo = new TestJdbcEnteSportivo();
+	        if ("asc".equals(ordina)) {
+	            elencoGare = testJdbcEnteSportivo.getGaraDao().loadGaraOrderByLuogo();
+	        } else if ("data".equals(ordina)) {
+	        	
+	        	elencoGare = testJdbcEnteSportivo.getGaraDao().loadGaraByDataAndOra();
+	        } else if (cerca != null && !cerca.isEmpty()) { // Aggiunto controllo per il parametro di ricerca
+	            elencoGare = testJdbcEnteSportivo.getGaraDao().loadGareLikeLuogo(cerca);
+	        } else {
+	            elencoGare = testJdbcEnteSportivo.getGaraDao().loadGara();
+	        }
+	        request.setAttribute("listaGare", elencoGare);
+	    } catch (EnteSportivoModelException e) {
+	        messageToShow = UserMessages.msgErroreVisualizzazioneLista;
+	    }
 
-		try {
-			TestJdbcEnteSportivo testJdbcEnteSportivo = new TestJdbcEnteSportivo();
-			if (ordina == null) {
-				elencoGare = testJdbcEnteSportivo.getGaraDao().loadGara();
-			} else if ("asc".equals(ordina)) {
-				elencoGare = testJdbcEnteSportivo.getGaraDao().loadGaraOrderByLuogo();
-			} else if ("data".equals(ordina)){
-				elencoGare = testJdbcEnteSportivo.getGaraDao().loadGaraByDataAndOra();
-			}
-			request.setAttribute("listaGare", elencoGare);
-			// HttpSession httpSession = request.getSession();
-		} catch (EnteSportivoModelException e) {
-			messageToShow = UserMessages.msgErroreVisualizzazioneLista;
-		}
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/homepage-staff-gara.jsp");
-		// ottiene il riferimento alla pagina JSP
-		dispatcher.forward(request, response);
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/homepage-staff-gara.jsp");
+	    dispatcher.forward(request, response);
 	}
 
 	
@@ -382,6 +392,69 @@ String luogo = request.getParameter("luogo") != null ? request.getParameter("luo
 	
 	}
 	
+	private void actionElencoVelocisti(HttpServletRequest request, HttpServletResponse response)
+	        throws ServletException, IOException {
+
+	    String messageToShow = UserMessages.msgEsitoOkVisualizzazioneLista;
+	    
+	    List<Velocista> elencoVelocisti = new ArrayList<>();
+	  
+	    try {
+	        TestJdbcEnteSportivo testJdbcEnteSportivo = new TestJdbcEnteSportivo();
+	        
+	            elencoVelocisti = testJdbcEnteSportivo.getVelocistaDao().loadVelocista();
+	    } catch (EnteSportivoModelException e) {
+	        messageToShow = UserMessages.msgErroreVisualizzazioneLista;
+	    }
+	    request.setAttribute("listaVelocisti", elencoVelocisti);
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/elenco-velocisti.jsp");
+	    dispatcher.forward(request, response);
+	}
 	
+	public void actionVelocista(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String messageToShow = UserMessages.msgEsitoOkIscrizione;
+
+		 String nominativo = request.getParameter("nominativo") != null ? request.getParameter("nominativo") : "";
+		  String etaString = request.getParameter("eta") != null ? request.getParameter("eta") : "";
+        String codiceFiscale = request.getParameter("codice-fiscale")!= null ? request.getParameter("codice-fiscale") : "";
+        String altezzaString = request.getParameter("altezza")!= null ? request.getParameter("altezza") : "";
+          String pesoString = request.getParameter("peso")!= null ? request.getParameter("peso") : "";
+		// LocalDateTime dataOraiscrizione =
+		// LocalDateTime.parse(dataOraIscrizioneString);
+		Integer eta = Integer.parseInt(etaString);
+		Integer altezza = Integer.parseInt(altezzaString);
+		Float peso = Float.parseFloat(pesoString);
+		Velocista velocista = new Velocista(codiceFiscale, nominativo, eta, altezza, peso);
+		try {
+			TestJdbcEnteSportivo testJdbcEnteSportivo = new TestJdbcEnteSportivo();
+			testJdbcEnteSportivo.getVelocistaDao().addVelocista(velocista);
+
+			messageToShow = UserMessages.msgOkVelocista;
+
+		} catch (EnteSportivoModelException e) {
+
+			messageToShow = UserMessages.msgErroreVelocista;
+			// htmlContentPage = e.getMessage().getBytes();
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("message-to-show", messageToShow);
+//		// imposta il parametro nominativoUtenteLoggato
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/message-staff-velocista.jsp");
+		// ottiene il riferimento alla apgina JSP
+		dispatcher.forward(request, response);
+	}
 	
+	private static void actionFormVelocista(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// throws BancaControlException, BancaModelException {
+	
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/form-velocista.jsp");
+		// ottiene il riferimento alla pagina JSP
+		dispatcher.forward(request, response);
+
+	}
 }

@@ -27,10 +27,15 @@
 
 	</div>
      <br>
+     <form class="d-flex" action="/ente-sportivo/homepage-velocista" method="GET" style="justify-content: flex-end;">
+  <input class="form-control me-2" type="text" name="ricerca" placeholder="Ricerca" aria-label="Ricerca" style="color: black; width: 200px;">
+  <button class="btn btn-secondary" style="background-color: green;" type="submit">Cerca</button>
+</form>
 	   <h1><Strong style="color:green" >&#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 
 	    &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160 &#160  &#160 &#160 &#160 &#160 &#160    VELOCISTA </Strong> </h1>
 	<br>
-	
+	<a  class="btn " id="btn"  style="background-color: green; color:white;"
+			href="/ente-sportivo/homepage-velocista"> Elenco Gare </a>
 	<div class="conteiner" align="left">
 		Ordina per Luogo <a class="btn " id="btn"
 			href="/ente-sportivo/homepage-velocista?ordinamento=asc" style="background-color:red;"> </a> 
