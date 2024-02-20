@@ -5,7 +5,7 @@
 <%@ page import="java.time.format.DateTimeFormatter"%>
 <html>
 <head>
-<link rel="icon" href="img/icona.png" type="image/png">
+<link rel="icon" href="/img/icona.png" type="image/png">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
@@ -23,8 +23,8 @@
 
 <div class="conteiner" align="right">
 	<img src="/img/staff2.jpg" width="500" height="200" align="right">
-	<img src="img/staff.jpg" width="465" height="200" align="center">
-	<img src="img/staff3.jpg" width="500" height="200" align="left">
+	<img src="/img/staff.jpg" width="465" height="200" align="center">
+	<img src="/img/staff3.jpg" width="500" height="200" align="left">
 
 </div>
  <br>
@@ -47,8 +47,7 @@
 	href="/ente-sportivo/homepage-staff-gara"> Elenco Gare </a>
 <a class="btn btn-success " style="background-color: orange;"
 	href="/ente-sportivo/homepage-staff-gara/form-gara"> Nuova Gara </a>
-<a class="btn " id="btn" style="background-color: orange; color: white;"
-	href="/ente-sportivo/homepage-staff-gara"> Elenco Gare </a> &#160
+&#160
 <a class="btn" id="btn" style="background-color: orange; color: white;"
 	href="/ente-sportivo/homepage-staff-gara/elenco-velocisti"> Elenco
 	Velocisti </a>

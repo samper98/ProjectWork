@@ -9,7 +9,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
-	<link rel="icon" href="img/icona.png" type="image/png">
+	<link rel="icon" href="/img/icona.png" type="image/png">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 	integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
@@ -21,9 +21,9 @@
 
 <body>
 	<div class="conteiner" align="right">
-		<img src="img/maratona.jpg" width="500" height="200" align="right">
-		<img src="img/maratona3.jpg" width="465" height="200" align="center">
-		<img src="img/maratona2.jpg" width="500" height="200" align="left">
+		<img src="/img/maratona.jpg" width="500" height="200" align="right">
+		<img src="/img/maratona3.jpg" width="465" height="200" align="center">
+		<img src="/img/maratona2.jpg" width="500" height="200" align="left">
 
 	</div>
      <br>
