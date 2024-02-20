@@ -24,7 +24,7 @@
             <h1> Nuovo Velocista </h1>
         </center>
 		
-		<form action="/ente-sportivo/homepage-staff-gara/velocista" method="post">
+		<form action="/ente-sportivo/homepage-staff-gara/velocista" method="get">
 		
 			<p>Per favore, indicare i dati per inserire un nuovo velocista  !!!.</p>
 			<br>
@@ -40,7 +40,7 @@
       	<br>
       	<label for="codice-fiscale">Codice Fiscale</label>
 			<br>
-			<input type="text" id="codice_fiscale" name="codice_fiscale" minlength="16" maxlength="16" value=""   />
+			<input type="text" id="codice-fiscale" name="codice-fiscale" minlength="16" maxlength="16" value=""   />
         	<br>
         	<label for="altezza">Altezza</label>
 			<br>
@@ -54,6 +54,11 @@
 			<input type="submit"  style="color:orange;" value="nuovo">
 			
 		</form>
-  
+  <script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+	integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+	crossorigin="anonymous"></script>
+
+<script>
 	</body>
 </html>

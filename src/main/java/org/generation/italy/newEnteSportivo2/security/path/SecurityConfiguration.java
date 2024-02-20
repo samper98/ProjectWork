@@ -20,17 +20,17 @@ public class SecurityConfiguration {
 	  SecurityFilterChain filterChain(HttpSecurity http) 
 	  	throws Exception {
 		    http		 
-		    //.authorizeHttpRequests((requests) -> requests.anyRequest().authenticated()).formLogin((form) -> form.permitAll());
+		//    .authorizeHttpRequests((requests) -> requests.anyRequest().permitAll()).formLogin((form) -> form.permitAll());
 		    .authorizeHttpRequests((requests) -> requests
 		    	//richieste GET per nuovo, modifica, elimina prodotto richiedono il ruolo admin
 		    	.requestMatchers(
 		    			"/ente-sportivo/homepage-staff-gara/**")				//necessarie per bootstrap e font awesome				
-				.hasAuthority("staff")
+				.hasAuthority("staff-gara")
 				
 				//richieste POST per nuovo, modifica, elimina prodotto richiedono il ruolo admin			    
 				.requestMatchers(HttpMethod.POST,
 						"/ente-sportivo/homepage-staff-gara/**")				//necessarie per bootstrap e font awesome						//necessarie per bootstrap e font awesome		
-				.hasAuthority("staff")
+				.hasAuthority("staff-gara")
 			)
 		    
 		    .authorizeHttpRequests((requests) -> requests

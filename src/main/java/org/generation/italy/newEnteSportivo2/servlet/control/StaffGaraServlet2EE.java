@@ -425,6 +425,7 @@ String luogo = request.getParameter("luogo") != null ? request.getParameter("luo
           String pesoString = request.getParameter("peso")!= null ? request.getParameter("peso") : "";
 		// LocalDateTime dataOraiscrizione =
 		// LocalDateTime.parse(dataOraIscrizioneString);
+          System.out.println("codiceFiscale" + codiceFiscale);
 		Integer eta = Integer.parseInt(etaString);
 		Integer altezza = Integer.parseInt(altezzaString);
 		Float peso = Float.parseFloat(pesoString);

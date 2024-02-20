@@ -6,6 +6,8 @@ import org.generation.italy.newEnteSportivo2.security.path.DatabaseUserDetails;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
@@ -17,14 +19,14 @@ public class MainController {
 //	}
 	
 	
-	
+	// GET IS NEW GOT 
 	@GetMapping
 	public String index(Authentication authentication) {
 		DatabaseUserDetails dbUser=(DatabaseUserDetails) authentication.getPrincipal();
 		Utente u=dbUser.getUtente();
 		Boolean staff=false;
 		for (Ruolo r:u.getRuoli())
-			if(r.getName().equals("staff"))
+			if(r.getName().equals("staff-gara"))
 				staff=true;
 		if (staff)
 		

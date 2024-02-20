@@ -24,14 +24,14 @@
             <h1> Iscrizione Gara </h1>
         </center>
 		
-		<form action="/ente-sportivo/iscrizione" method="post">
+		<form action="/ente-sportivo/homepage-velocista/iscrizione" method="get"> 
 		
-			<p>Per favore, indicare i dati per svolgere la gara  !!!.</p>
+			<p>Per piacere , indicare i dati per svolgere la gara  !!!.</p>
 			
 			<label for="codice_fiscale">Codice Fiscale</label>
 			<br>
 			<input type="text" id="codice_fiscale" name="codice_fiscale" minlength="16" maxlength="16" value=""   />
-	        <c:set var="idgara" value='${requestScope["id-gara"]}' />    
+   <c:set var="idgara" value='${requestScope["id-gara"]}' />      
 	        
 		     <input type="hidden" id="id-gara"	name="id-gara" value="<c:out value="${idgara}" />"  />
        

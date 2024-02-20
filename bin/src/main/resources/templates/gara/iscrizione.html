@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	
+	<link th:rel="stylesheet" href="/src/main/resources/templates/gara/iscrizione.css">
+	
+<head>
+<meta charset="ISO-8859-1">
+<title> iscrizione</title>
+</head>
+	
+<body>
+			<!--<tr th:each="elencoiscritti : ${elencogare}"> -->
+						
+		
+			<div style="font-style: oblique; color: chocolate;">Per favore, indicare i dati per eseguire l'iscrizione alla gara'.</div>
+			<br>
+			
+			<label style="background-color:bisque;padding-right: 5.3%;" for="data_iscrizione">Data iscrizione</label>
+			<br>
+			<input style="border-radius: 10px;" type="date" id="data_iscrizione" name="data_iscrizione" minlength="10" maxlength="10"  />
+	
+			<br>	
+			
+			<label style="background-color: bisque; padding-right: 5.7%;" for="codice_fiscale">Codice fiscale</label><br>
+			<input style="border-radius: 10px;" type="text" id="codice_fiscale" name="codice_fiscale"  minlength="16" maxlength="16" />
+	
+			<br>
+		
+			<input style="margin-top:20px ; margin-left: 15px;" type="submit" value="conferma iscrizione">
+			
+		</form>
+		</div>
+</body>
+</html>

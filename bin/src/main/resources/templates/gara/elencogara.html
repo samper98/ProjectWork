@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+
+<html xmlns:th="http://www.thymeleaf.org/">
+
+
+<link th:rel="stylesheet" href="/src/main/resources/templates/gara/elencogare.css">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Gare </title>
+
+	<meta th:replace="fragments/resources :: head">
+</head>
+
+<body>
+	<h2>ELENCO GARE </h2>
+	<!--<button class="button">ordina per lugo</button>-->
+
+	</form>
+<div style="margin-top: 3%;">
+	<form style="margin-left: 10%;margin-bottom: -2.1%;" th:action="@{/gara/ordina-gare}" method="get">
+		<button type="submit">ordina per luogo</button>
+	</form>
+
+		<form th:action="@{/gara/elenco}" method="get">
+			<button type="submit">ordina per data</button>
+		</form>
+
+		<table class="table table-success table-striped table-hover">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>luogo</th>
+					<th>data ora luogo</th>
+					<th>Iscrizione</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr th:each="gara : ${elencogare}">
+
+					<td th:text="${gara.idGara}"></td>
+					<td th:text="${gara.luogo}"></td>
+					<td th:text="${gara.dataGara}"></td>
+					<td>
+						<a class="btn btn-success mb-2" th:href=|/iscrizione/nuovo/${gara.idGara}|><i
+								class="fa-solid fa-plus"></i> Iscrizione</a>
+						<!--<a th:href="|/iscrizione/nuovo/${gara.idGara}|" ><i class="fa-solid fa-plus"></i> Iscrizione</a>-->
+					</td>
+
+
+				</tr>
+			</tbody>
+			<P></P>
+			<P></P>
+		</table>
+		<h2>ELENCO DEI VELOCISTI </h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>codice Fiscale</th>
+					<th>Nominativo</th>
+					<th>età</th>
+					<th>altezza</th>
+					<th>peso</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="velocisti : ${elencovelocisti}">
+					<td th:text="${velocisti.codiceFiscale}"></td>
+					<td th:text="${velocisti.nominativo}"></td>
+					<td th:text="${velocisti.eta}"></td>
+					<td th:text="${velocisti.altezza}"></td>
+					<td th:text="${velocisti.peso}"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<script th:replace="fragments/resources :: scripts"></script>
+
+</body>
+</div>
+</html>

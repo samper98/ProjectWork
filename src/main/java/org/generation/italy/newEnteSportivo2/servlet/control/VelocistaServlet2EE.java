@@ -38,10 +38,12 @@ public class VelocistaServlet2EE extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) // metodo chiamato dal container
 																					// (GlassFish), a seguito di
 																					// ricezione da parte sua del
-																					// messaggio HTTP-Request, con
-																					// metodo POST inviato dal client
+																				// messaggio HTTP-Request, con
+															// metodo POST inviato dal client
 																					// (browser)
 			throws ServletException, IOException {
+		
+		System.out.println("POSTOLO");
 		executeAction(request, response); // re-inoltra al metodo doGet la gestione della action | request e response
 											// sono istanze di tipo HttpServletRequest ed HttpServletResponse, create
 											// dal container per fornire a e ricevere dalla servlet i dettagli circa i
@@ -79,7 +81,7 @@ public class VelocistaServlet2EE extends HttpServlet {
 																							// GET inviato dal client
 																							// (browser)
 			throws ServletException, IOException {
-
+		System.out.println("actiolo");
 		String actionName;
 		if (request.getPathInfo() != null)
 		 actionName = request.getServletPath()+request.getPathInfo(); // parte action della URI: gestione della azione applicativa, la
@@ -110,6 +112,7 @@ public class VelocistaServlet2EE extends HttpServlet {
 			actionFormIscrizione(request, response);
 			break;
 		case "/ente-sportivo/homepage-velocista/iscrizione":
+			
 			System.out.println("azione" + actionName);
 			actionIscrizione(request, response);
 
